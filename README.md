@@ -4,6 +4,14 @@ Skill collection for Claude Code. Provides productivity-enhancing skills includi
 
 [日本語版 README はこちら](README.ja.md)
 
+## Prerequisites
+
+- [GitHub CLI](https://cli.github.com/) (`gh` command)
+- [gh-pr-review](https://github.com/agynio/gh-pr-review) extension:
+  ```bash
+  gh extension install agynio/gh-pr-review
+  ```
+
 ## Installation
 
 ### Option 1: Inside Claude Code (Recommended)
@@ -62,11 +70,6 @@ Assists with responding to PR review comments.
 - Automatically detects PR language (English/Japanese)
 - Replies in detected language
 - Override with "reply in [language]"
-
-**Prerequisite:**
-```bash
-gh extension install agynio/gh-pr-review
-```
 
 ## License
 
