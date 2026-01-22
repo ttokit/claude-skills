@@ -41,6 +41,11 @@ Assists with responding to PR review comments.
 - Execute code changes and create commits
 - Reply to review comments
 
+**Key Benefits:**
+- **Fetches only unresolved inline comments** - Non-inline comments (e.g., PR-level comments) require explicit instruction
+- **Confirms with user before each action** - Uses AskUserQuestion to confirm approach for each comment
+- **Never auto-resolves comments** - Keeps comments visible on PR for user verification and editing
+
 **Triggers:**
 - "review response", "PR comments", "address feedback"
 - "respond to review", "PR #123 review"
