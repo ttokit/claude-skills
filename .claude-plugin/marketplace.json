@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ttokit-claude-skills",
+  "version": "1.0.0",
+  "description": "PR review and productivity skills for Claude Code",
+  "owner": {
+    "name": "ttokit"
+  },
+  "plugins": [
+    {
+      "name": "pr-review-response",
+      "source": "./pr-review-response",
+      "description": "Assists with PR review comment responses. Analyzes comment validity, confirms response approach, executes code changes, and replies to reviewers.",
+      "version": "1.0.0",
+      "author": {
+        "name": "ttokit"
+      },
+      "repository": "https://github.com/ttokit/claude-skills",
+      "license": "MIT",
+      "keywords": ["pr", "review", "pr-review", "github", "productivity"]
+    }
+  ]
+}

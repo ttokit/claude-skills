@@ -1,7 +1,7 @@
 {
-  "name": "claude-skills",
+  "name": "pr-review-response",
   "version": "1.0.0",
-  "description": "PR review response and other productivity skills for Claude Code",
+  "description": "Assists with PR review comment responses. Analyzes comment validity, confirms response approach, executes code changes, and replies to reviewers.",
   "author": {
     "name": "ttokit"
   },

@@ -1,35 +1,60 @@
 # claude-skills
 
-Claude Code 用のスキルコレクション。PRレビュー対応などの生産性向上スキルを提供します。
+Skill collection for Claude Code. Provides productivity-enhancing skills including PR review response.
 
-## インストール
+[日本語版 README はこちら](README.ja.md)
 
-```bash
-claude plugin install ttokit/claude-skills
+## Installation
+
+### Option 1: Inside Claude Code (Recommended)
+
+**Step 1: Add the marketplace**
+```
+/plugin marketplace add ttokit/claude-skills
 ```
 
-## 含まれるスキル
+**Step 2: Install the plugin**
+```
+/plugin install pr-review-response@ttokit-claude-skills
+```
+
+### Option 2: Shell Command
+
+```bash
+claude plugin install pr-review-response@ttokit-claude-skills
+```
+
+With project scope (for team sharing):
+```bash
+claude plugin install pr-review-response@ttokit-claude-skills --scope project
+```
+
+## Included Skills
 
 ### pr-review-response
 
-PRレビュー指摘への対応を支援するスキル。
+Assists with responding to PR review comments.
 
-**機能:**
-- レビューコメントの取得と妥当性分析
-- 対応方針の確認（修正/反論/スキップ）
-- コード修正の実行とコミット作成
-- レビューコメントへの返信
+**Features:**
+- Fetch review comments and analyze validity
+- Confirm response approach (fix/disagree/skip)
+- Execute code changes and create commits
+- Reply to review comments
 
-**トリガー:**
-- 「レビュー対応」「PR指摘」「review response」
-- 「コメント対応」「レビューコメント」「指摘対応」
-- 「PR #123 のレビュー対応」
+**Triggers:**
+- "review response", "PR comments", "address feedback"
+- "respond to review", "PR #123 review"
 
-**前提条件:**
+**Language Support:**
+- Automatically detects PR language (English/Japanese)
+- Replies in detected language
+- Override with "reply in [language]"
+
+**Prerequisite:**
 ```bash
 gh extension install agynio/gh-pr-review
 ```
 
-## ライセンス
+## License
 
 MIT
