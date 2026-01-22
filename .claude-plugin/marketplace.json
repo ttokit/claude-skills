@@ -1,5 +1,4 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ttokit-claude-skills",
   "version": "1.0.0",
   "description": "PR review and productivity skills for Claude Code",

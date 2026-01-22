@@ -4,7 +4,8 @@ description: |
   Assists with PR review comment responses. Analyzes comment validity,
   confirms response approach, executes code changes, and replies to reviewers.
   Triggers: "review response", "PR comments", "address feedback",
-  "respond to review", "PR #123 review"
+  "respond to review", "PR #123 review",
+  「レビュー対応」「PR指摘」「コメント対応」
 ---
 
 # PR Review Response
@@ -44,6 +45,7 @@ At the start of Phase 1, detect the primary language for comment replies:
    - Japanese characters (hiragana/katakana/kanji): **Japanese**
    - English/Latin characters: **English**
    - Mixed/unclear: **Ask user via AskUserQuestion**
+   - Empty/symbols only/no text content: **Default to English**, then ask user to confirm
 
 3. Display result:
    ```
@@ -51,12 +53,12 @@ At the start of Phase 1, detect the primary language for comment replies:
    (Override with "reply in [language]" at any time)
    ```
 
-4. Load appropriate template from `templates/{lang}.md`
+4. Load appropriate template from `${SKILL_DIR}/templates/{lang}.md` (relative to skill root)
 
 ### Fetch Unresolved Comments
 
 ```bash
-gh pr-review review view --repo {owner/repo} --pr {pr_number} --unresolved
+gh pr-review review view -R owner/repo --pr {pr_number} --unresolved
 ```
 
 See [gh-pr-review-usage.md](references/gh-pr-review-usage.md) for detailed options.
