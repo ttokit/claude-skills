@@ -41,9 +41,17 @@ Assists with responding to PR review comments.
 - Execute code changes and create commits
 - Reply to review comments
 
+**Workflow:**
+- 3-phase process: Analyze → Confirm → Execute
+- Parallel sub-agent analysis for multiple comments
+- Auto-detects PR from current branch (no PR number needed)
+
 **Key Benefits:**
-- **Fetches only unresolved inline comments** - Non-inline comments (e.g., PR-level comments) require explicit instruction
+- **End-to-end automation** - Code fix → Test → Format → Commit → Push → Reply in one flow
+- **Smart validity assessment** - Evaluates each comment as valid/invalid/partial with reasoning
 - **Confirms with user before each action** - Uses AskUserQuestion to confirm approach for each comment
+- **Response templates** - 4 templates (fix completed, disagreement, partial agreement, clarification) for consistent, professional replies
+- **Fetches only unresolved inline comments** - Non-inline comments (e.g., PR-level comments) require explicit instruction
 - **Never auto-resolves comments** - Keeps comments visible on PR for user verification and editing
 
 **Triggers:**
