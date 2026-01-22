@@ -1,0 +1,11 @@
+{
+  "name": "claude-skills",
+  "version": "1.0.0",
+  "description": "PR review response and other productivity skills for Claude Code",
+  "author": {
+    "name": "ttokit"
+  },
+  "repository": "https://github.com/ttokit/claude-skills",
+  "license": "MIT",
+  "keywords": ["pr", "review", "pr-review", "github", "productivity"]
+}
