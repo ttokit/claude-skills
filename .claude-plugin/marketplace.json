@@ -10,7 +10,7 @@
       "name": "pr-review-response",
       "source": "./pr-review-response",
       "description": "Assists with PR review comment responses. Analyzes comment validity, confirms response approach, executes code changes, and replies to reviewers.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "ttokit"
       },
