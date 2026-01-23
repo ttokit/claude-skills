@@ -57,6 +57,37 @@ Assists with responding to PR review comments.
 - Replies in detected language
 - Override with "reply in [language]"
 
+## Troubleshooting
+
+### gh-pr-review not working
+
+If the extension doesn't work properly you need to check a few things. Make sure you have the latest version installed. Try running `gh extension upgrade agynio/gh-pr-review` to update it.
+
+### Authentication issues
+
+Sometimes authentication can be tricky. You might need to re-authenticate. Run `gh auth login` to sign in again with GitHub, or `gh auth refresh` if you're already logged in but still seeing permission or token issues.
+
+### Comments not being fetched
+
+If comments aren't showing up there could be several reasons. Check if the PR is actually open and has comments. Also make sure you're on the right branch.
+
+## FAQ
+
+**Q: Does this work with GitLab or Bitbucket?**
+
+A: No, currently only GitHub is supported
+
+**Q: Can I customize the reply templates?**
+
+A: Templates are built-in and cannot be customized at this time. We may add this feature in the future.
+
+**Q: How does language detection work?**
+
+It analyzes the PR title and body text
+
+**Q: What happens if detection fails?**
+A: It defaults to English.
+
 ## License
 
 MIT
