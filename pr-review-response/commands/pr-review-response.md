@@ -1,6 +1,6 @@
 ---
-name: pr-review-response
 description: "Assists with PR review comment responses. Analyzes comment validity, confirms response approach, executes code changes, and replies to reviewers. Triggers: \"review response\", \"PR comments\", \"address feedback\", \"respond to review\", \"PR #123 review\", 「レビュー対応」「PR指摘」「コメント対応」"
+allowed-tools: ["Bash", "Glob", "Grep", "Read", "Edit", "Write", "Task", "AskUserQuestion"]
 ---
 
 # PR Review Response
@@ -48,7 +48,7 @@ At the start of Phase 1, detect the primary language for comment replies:
    (Override with "reply in [language]" at any time)
    ```
 
-4. Load appropriate template from `${SKILL_DIR}/templates/{lang}.md` (relative to skill root)
+4. Load appropriate template from `${COMMAND_DIR}/templates/{lang}.md` (relative to command root)
 
 ### Fetch Unresolved Comments
 
