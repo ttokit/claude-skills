@@ -1,5 +1,6 @@
 ---
-description: "Assists with PR review comment responses. Analyzes comment validity, confirms response approach, executes code changes, and replies to reviewers. Triggers: \"review response\", \"PR comments\", \"address feedback\", \"respond to review\", \"PR #123 review\", 「レビュー対応」「PR指摘」「コメント対応」"
+name: pr-review-response
+description: "Handles PR review comments through analyze-confirm-execute workflow. Analyzes comment validity, confirms response approach with user, executes code changes, and replies to reviewers. Use when responding to PR review comments, addressing feedback, or handling PR reviews."
 allowed-tools: ["Bash", "Glob", "Grep", "Read", "Edit", "Write", "Task", "AskUserQuestion"]
 ---
 
@@ -48,7 +49,7 @@ At the start of Phase 1, detect the primary language for comment replies:
    (Override with "reply in [language]" at any time)
    ```
 
-4. Load appropriate template from `../resources/templates/{lang}.md` (relative to command file)
+4. Load appropriate template from `./templates/{lang}.md` (relative to skill directory)
 
 ### Fetch Unresolved Comments
 
@@ -56,7 +57,7 @@ At the start of Phase 1, detect the primary language for comment replies:
 gh pr-review review view -R owner/repo --pr {pr_number} --unresolved
 ```
 
-See [gh-pr-review-usage.md](../resources/references/gh-pr-review-usage.md) for detailed options.
+See [gh-pr-review-usage.md](./reference/gh-pr-review-usage.md) for detailed options.
 
 ### Analysis (Parallel Sub-agents)
 
@@ -143,9 +144,9 @@ Reply content"
 
 ## Response Templates
 
-Use templates from `resources/templates/` based on detected language:
-- English: `../resources/templates/en.md`
-- Japanese: `../resources/templates/ja.md`
+Use templates from `templates/` based on detected language:
+- English: `./templates/en.md`
+- Japanese: `./templates/ja.md`
 
 ## Internal Processing Language Rules
 

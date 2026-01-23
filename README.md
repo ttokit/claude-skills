@@ -1,6 +1,6 @@
 # claude-plugins
 
-Plugin collection for Claude Code. Provides productivity-enhancing plugins including PR review response.
+Skill collection for Claude Code. Provides productivity-enhancing skills including PR review response.
 
 [日本語版 README はこちら](README.ja.md)
 
@@ -14,30 +14,16 @@ Plugin collection for Claude Code. Provides productivity-enhancing plugins inclu
 
 ## Installation
 
-### Option 1: Inside Claude Code (Recommended)
-
-**Step 1: Add the marketplace**
-```
-/plugin marketplace add ttokit/claude-plugins
-```
-
-**Step 2: Install the plugin**
-```
-/plugin install pr-review-response@ttokit-marketplace
-```
-
-### Option 2: Shell Command
-
 ```bash
-claude plugin install pr-review-response@ttokit-marketplace
+npx add-skill ttokit/claude-plugins
 ```
 
-With project scope (for team sharing):
+Or install only pr-review-response:
 ```bash
-claude plugin install pr-review-response@ttokit-marketplace --scope project
+npx add-skill ttokit/claude-plugins --skill pr-review-response
 ```
 
-## Included Plugins
+## Included Skills
 
 ### pr-review-response
 

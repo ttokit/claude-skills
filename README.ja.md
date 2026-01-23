@@ -1,6 +1,6 @@
 # claude-plugins
 
-Claude Code 用のプラグインコレクション。PRレビュー対応などの生産性向上プラグインを提供します。
+Claude Code 用のスキルコレクション。PRレビュー対応などの生産性向上スキルを提供します。
 
 [English README](README.md)
 
@@ -14,34 +14,20 @@ Claude Code 用のプラグインコレクション。PRレビュー対応など
 
 ## インストール
 
-### オプション1: Claude Code 内から（推奨）
-
-**ステップ1: マーケットプレースを追加**
-```
-/plugin marketplace add ttokit/claude-plugins
-```
-
-**ステップ2: プラグインをインストール**
-```
-/plugin install pr-review-response@ttokit-marketplace
-```
-
-### オプション2: シェルコマンド
-
 ```bash
-claude plugin install pr-review-response@ttokit-marketplace
+npx add-skill ttokit/claude-plugins
 ```
 
-プロジェクトスコープ（チーム共有用）:
+pr-review-response のみをインストールする場合:
 ```bash
-claude plugin install pr-review-response@ttokit-marketplace --scope project
+npx add-skill ttokit/claude-plugins --skill pr-review-response
 ```
 
-## 含まれるプラグイン
+## 含まれるスキル
 
 ### pr-review-response
 
-PRレビュー指摘への対応を支援するプラグイン。
+PRレビュー指摘への対応を支援するスキル。
 
 **機能:**
 - レビューコメントの取得と妥当性分析
