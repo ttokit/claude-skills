@@ -1,7 +1,7 @@
 {
-  "name": "ttokit-claude-skills",
+  "name": "ttokit-marketplace",
   "version": "1.0.0",
-  "description": "PR review and productivity skills for Claude Code",
+  "description": "PR review and productivity plugins for Claude Code",
   "owner": {
     "name": "ttokit"
   },
@@ -14,7 +14,7 @@
       "author": {
         "name": "ttokit"
       },
-      "repository": "https://github.com/ttokit/claude-skills",
+      "repository": "https://github.com/ttokit/claude-plugins",
       "license": "MIT",
       "keywords": ["pr", "review", "pr-review", "github", "productivity"]
     }

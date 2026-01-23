@@ -1,6 +1,6 @@
-# claude-skills
+# claude-plugins
 
-Skill collection for Claude Code. Provides productivity-enhancing skills including PR review response.
+Plugin collection for Claude Code. Provides productivity-enhancing plugins including PR review response.
 
 [日本語版 README はこちら](README.ja.md)
 
@@ -18,26 +18,26 @@ Skill collection for Claude Code. Provides productivity-enhancing skills includi
 
 **Step 1: Add the marketplace**
 ```
-/plugin marketplace add ttokit/claude-skills
+/plugin marketplace add ttokit/claude-plugins
 ```
 
 **Step 2: Install the plugin**
 ```
-/plugin install pr-review-response@ttokit-claude-skills
+/plugin install pr-review-response@ttokit-marketplace
 ```
 
 ### Option 2: Shell Command
 
 ```bash
-claude plugin install pr-review-response@ttokit-claude-skills
+claude plugin install pr-review-response@ttokit-marketplace
 ```
 
 With project scope (for team sharing):
 ```bash
-claude plugin install pr-review-response@ttokit-claude-skills --scope project
+claude plugin install pr-review-response@ttokit-marketplace --scope project
 ```
 
-## Included Skills
+## Included Plugins
 
 ### pr-review-response
 

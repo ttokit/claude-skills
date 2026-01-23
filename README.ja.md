@@ -1,6 +1,6 @@
-# claude-skills
+# claude-plugins
 
-Claude Code 用のスキルコレクション。PRレビュー対応などの生産性向上スキルを提供します。
+Claude Code 用のプラグインコレクション。PRレビュー対応などの生産性向上プラグインを提供します。
 
 [English README](README.md)
 
@@ -18,30 +18,30 @@ Claude Code 用のスキルコレクション。PRレビュー対応などの生
 
 **ステップ1: マーケットプレースを追加**
 ```
-/plugin marketplace add ttokit/claude-skills
+/plugin marketplace add ttokit/claude-plugins
 ```
 
 **ステップ2: プラグインをインストール**
 ```
-/plugin install pr-review-response@ttokit-claude-skills
+/plugin install pr-review-response@ttokit-marketplace
 ```
 
 ### オプション2: シェルコマンド
 
 ```bash
-claude plugin install pr-review-response@ttokit-claude-skills
+claude plugin install pr-review-response@ttokit-marketplace
 ```
 
 プロジェクトスコープ（チーム共有用）:
 ```bash
-claude plugin install pr-review-response@ttokit-claude-skills --scope project
+claude plugin install pr-review-response@ttokit-marketplace --scope project
 ```
 
-## 含まれるスキル
+## 含まれるプラグイン
 
 ### pr-review-response
 
-PRレビュー指摘への対応を支援するスキル。
+PRレビュー指摘への対応を支援するプラグイン。
 
 **機能:**
 - レビューコメントの取得と妥当性分析
