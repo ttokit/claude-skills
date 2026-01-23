@@ -35,6 +35,13 @@ Assists with responding to PR review comments.
 - Execute code changes and create commits
 - Reply to review comments
 
+**Usage:**
+1. Checkout the branch for the PR you want to handle
+2. Run `/pr-review-response` in Claude Code
+3. Follow the interactive prompts to analyze, confirm, and respond to comments
+
+Or trigger by typing "respond to review" or "address PR feedback".
+
 **Workflow:**
 - 3-phase process: Analyze → Confirm → Execute
 - Parallel sub-agent analysis for multiple comments
