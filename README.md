@@ -65,7 +65,7 @@ If the extension doesn't work properly you need to check a few things. Make sure
 
 ### Authentication issues
 
-Sometimes authentication can be tricky. You might need to re-authenticate. Run the gh auth command to fix it.
+Sometimes authentication can be tricky. You might need to re-authenticate. Run `gh auth login` to sign in again with GitHub, or `gh auth refresh` if you're already logged in but still seeing permission or token issues.
 
 ### Comments not being fetched
 
@@ -78,6 +78,7 @@ If comments aren't showing up there could be several reasons. Check if the PR is
 A: No, currently only GitHub is supported
 
 **Q: Can I customize the reply templates?**
+
 A: Templates are built-in and cannot be customized at this time. We may add this feature in the future.
 
 **Q: How does language detection work?**
