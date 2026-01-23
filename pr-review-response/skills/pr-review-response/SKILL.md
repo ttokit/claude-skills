@@ -1,11 +1,6 @@
 ---
 name: pr-review-response
-description: |
-  Assists with PR review comment responses. Analyzes comment validity,
-  confirms response approach, executes code changes, and replies to reviewers.
-  Triggers: "review response", "PR comments", "address feedback",
-  "respond to review", "PR #123 review",
-  「レビュー対応」「PR指摘」「コメント対応」
+description: "Assists with PR review comment responses. Analyzes comment validity, confirms response approach, executes code changes, and replies to reviewers. Triggers: \"review response\", \"PR comments\", \"address feedback\", \"respond to review\", \"PR #123 review\", 「レビュー対応」「PR指摘」「コメント対応」"
 ---
 
 # PR Review Response
