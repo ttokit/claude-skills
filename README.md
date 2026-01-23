@@ -57,6 +57,10 @@ Assists with responding to PR review comments.
 - Replies in detected language
 - Override with "reply in [language]"
 
+**Demo:**
+- [Demo PR (English)](https://github.com/ttokit/claude-skills/pull/1) - English review response
+- [Demo PR (日本語)](https://github.com/ttokit/claude-skills/pull/2) - Japanese review response
+
 ## License
 
 MIT

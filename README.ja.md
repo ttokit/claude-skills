@@ -58,6 +58,10 @@ PRレビュー指摘への対応を支援するスキル。
 - 検出した言語で返信
 - "reply in [language]" でオーバーライド可能
 
+**デモ:**
+- [Demo PR (English)](https://github.com/ttokit/claude-skills/pull/1) - 英語でレビュー返信
+- [Demo PR (日本語)](https://github.com/ttokit/claude-skills/pull/2) - 日本語でレビュー返信
+
 ## ライセンス
 
 MIT
