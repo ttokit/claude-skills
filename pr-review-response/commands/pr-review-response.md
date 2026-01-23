@@ -48,7 +48,7 @@ At the start of Phase 1, detect the primary language for comment replies:
    (Override with "reply in [language]" at any time)
    ```
 
-4. Load appropriate template from `${COMMAND_DIR}/templates/{lang}.md` (relative to command root)
+4. Load appropriate template from `../resources/templates/{lang}.md` (relative to command file)
 
 ### Fetch Unresolved Comments
 
@@ -56,7 +56,7 @@ At the start of Phase 1, detect the primary language for comment replies:
 gh pr-review review view -R owner/repo --pr {pr_number} --unresolved
 ```
 
-See [gh-pr-review-usage.md](references/gh-pr-review-usage.md) for detailed options.
+See [gh-pr-review-usage.md](../resources/references/gh-pr-review-usage.md) for detailed options.
 
 ### Analysis (Parallel Sub-agents)
 
@@ -143,9 +143,9 @@ Reply content"
 
 ## Response Templates
 
-Use templates from the `templates/` folder based on detected language:
-- English: `templates/en.md`
-- Japanese: `templates/ja.md`
+Use templates from `resources/templates/` based on detected language:
+- English: `../resources/templates/en.md`
+- Japanese: `../resources/templates/ja.md`
 
 ## Internal Processing Language Rules
 
