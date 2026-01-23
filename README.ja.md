@@ -1,4 +1,4 @@
-# claude-plugins
+# claude-skills
 
 Claude Code 用のスキルコレクション。PRレビュー対応などの生産性向上スキルを提供します。
 
@@ -15,12 +15,12 @@ Claude Code 用のスキルコレクション。PRレビュー対応などの生
 ## インストール
 
 ```bash
-npx add-skill ttokit/claude-plugins
+npx skills add ttokit/claude-skills
 ```
 
 pr-review-response のみをインストールする場合:
 ```bash
-npx add-skill ttokit/claude-plugins --skill pr-review-response
+npx skills add ttokit/claude-skills --skill pr-review-response
 ```
 
 ## 含まれるスキル

@@ -1,4 +1,4 @@
-# claude-plugins
+# claude-skills
 
 Skill collection for Claude Code. Provides productivity-enhancing skills including PR review response.
 
@@ -15,12 +15,12 @@ Skill collection for Claude Code. Provides productivity-enhancing skills includi
 ## Installation
 
 ```bash
-npx add-skill ttokit/claude-plugins
+npx skills add ttokit/claude-skills
 ```
 
 Or install only pr-review-response:
 ```bash
-npx add-skill ttokit/claude-plugins --skill pr-review-response
+npx skills add ttokit/claude-skills --skill pr-review-response
 ```
 
 ## Included Skills
