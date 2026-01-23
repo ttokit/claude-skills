@@ -103,6 +103,38 @@ How would you like to respond?
 - Skip
 ```
 
+### AskUserQuestion Guidelines
+
+1. **Language**: Follow user's CLAUDE.md setting for ALL UI text (question, options labels, descriptions)
+2. **Recommended option**: Always mark the recommended option with "(Recommended)" or "（推奨）" suffix based on user's language
+   - Place recommended option FIRST in the options list
+3. **Option mapping by analysis result**:
+   - `valid` → Recommend "Fix the issue"
+   - `invalid` → Recommend "Disagree with feedback"
+   - `partial` → Recommend "Fix the issue" (address valid parts)
+
+Example (Japanese user, valid comment):
+```json
+{
+  "options": [
+    {"label": "修正する（推奨）", "description": "指摘に従ってコードを修正"},
+    {"label": "反論する", "description": "現在の実装を維持する理由を説明"},
+    {"label": "スキップ", "description": "このコメントには対応しない"}
+  ]
+}
+```
+
+Example (English user, invalid comment):
+```json
+{
+  "options": [
+    {"label": "Disagree with feedback (Recommended)", "description": "Explain why current implementation is preferred"},
+    {"label": "Fix the issue", "description": "Apply the suggested change"},
+    {"label": "Skip", "description": "Do not respond to this comment"}
+  ]
+}
+```
+
 ## Phase 3: Execution
 
 Launch a sub-agent (Task tool) for each approved action.
@@ -155,5 +187,5 @@ Use templates from `templates/` based on detected language:
 | Sub-agent prompts | English + language instruction |
 | Commit messages | Always English (Conventional Commits) |
 | Error messages | User's CLAUDE.md setting |
-| AskUserQuestion UI | User's CLAUDE.md setting |
+| AskUserQuestion (question, options, descriptions) | User's CLAUDE.md setting |
 | Comment replies | Detected language (user-overridable) |
