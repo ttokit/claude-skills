@@ -53,9 +53,17 @@ At the start of Phase 1, detect the primary language for comment replies:
 
 ### Fetch Unresolved Comments
 
+**IMPORTANT**: Only process unresolved comments. Never show resolved comments to the user.
+
 ```bash
 gh pr-review review view -R owner/repo --pr {pr_number} --unresolved
 ```
+
+**Filtering rules**:
+- Always use `--unresolved` flag when fetching comments
+- If using `--json` output, skip any comment where `is_resolved: true`
+- Do NOT include resolved comments in Phase 2 confirmation
+- Do NOT ask the user about resolved comments
 
 See [gh-pr-review-usage.md](./reference/gh-pr-review-usage.md) for detailed options.
 
