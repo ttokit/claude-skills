@@ -152,11 +152,49 @@ Launch a sub-agent (Task tool) for each approved action.
 ### When Fixing
 
 1. Execute code changes
-2. Run tests: `pnpm test`
-3. Format code: `pnpm fmt`
-4. Create commit (Conventional Commits format)
-5. Push to remote
-6. Reply to comment (include commit hash and URL)
+
+2. Detect test and format commands by analyzing project configuration:
+
+   **Detection sources** (sub-agent analyzes and determines priority):
+   - Lock files: `pnpm-lock.yaml`, `yarn.lock`, `package-lock.json`, `Gemfile.lock`, `poetry.lock`, `Cargo.lock`, etc.
+   - Config files: `package.json` (scripts), `mix.exs`, `Makefile`, `pyproject.toml`, `Cargo.toml`, `go.mod`, etc.
+   - CI configs: `.github/workflows/*.yml`, `.gitlab-ci.yml`, `.circleci/config.yml`
+   - README: May document test/format commands
+
+   **Supported ecosystems:**
+   | Indicator | Test | Format |
+   |-----------|------|--------|
+   | package.json | Check scripts for `test`, `test:*` | Check scripts for `fmt`, `format`, `lint:fix` |
+   | mix.exs | `mix test` | `mix format` |
+   | Gemfile | `bundle exec rspec` or `rake test` | `bundle exec rubocop -a` |
+   | pyproject.toml | `pytest` | `ruff format` or `black` |
+   | Cargo.toml | `cargo test` | `cargo fmt` |
+   | go.mod | `go test ./...` | `go fmt ./...` |
+   | Makefile | `make test` | `make fmt` or `make format` |
+
+   **For other ecosystems:** Sub-agent analyzes CI config and project structure to determine appropriate commands.
+
+   **For monorepos:** Sub-agent determines whether to run tests at root or in the affected package.
+
+   **If command not detected:** Display warning and skip (do not fail).
+
+3. Run detected test command (full test suite)
+   - If tests fail:
+     - Display error output
+     - Ask user via AskUserQuestion:
+       - "Fix and retry" - Address the failure and re-run tests
+       - "Skip tests and continue" - Proceed without passing tests (warn in PR comment)
+       - "Abort" - Stop the entire process
+
+4. Run detected format command (if found)
+   - If not detected: Display warning and skip
+
+5. Create commit (Conventional Commits format)
+
+6. Push to remote
+
+7. Reply to comment (include commit hash and URL)
+   - If tests were skipped, mention this in the reply
 
 ### When Disagreeing
 
