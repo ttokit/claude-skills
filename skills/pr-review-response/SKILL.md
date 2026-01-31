@@ -97,7 +97,9 @@ Return the following analysis:
 
 **Important**: This process must run in the parent process. AskUserQuestion cannot be used within sub-agents.
 
-Display analysis results for each comment and confirm with AskUserQuestion:
+Display analysis results for each comment and confirm with AskUserQuestion.
+
+**For Japanese users**: Translate validity terms using Terminology Translation table.
 
 ```
 ## Comment {n}/{total}
@@ -119,9 +121,9 @@ How would you like to respond?
 2. **Recommended option**: Always mark the recommended option with "(Recommended)" or "（推奨）" suffix based on user's language
    - Place recommended option FIRST in the options list
 3. **Option mapping by analysis result**:
-   - `valid` → Recommend "Fix the issue"
-   - `invalid` → Recommend "Disagree with feedback"
-   - `partial` → Recommend "Fix the issue" (address valid parts)
+   - `valid` (妥当) → Recommend "Fix the issue"
+   - `invalid` (不適切) → Recommend "Disagree with feedback"
+   - `partial` (一部妥当) → Recommend "Fix the issue" (address valid parts)
 
 Example (Japanese user, valid comment):
 ```json
@@ -238,6 +240,20 @@ Reply content"
 Use templates from `templates/` based on detected language:
 - English: `./templates/en.md`
 - Japanese: `./templates/ja.md`
+
+## Terminology Translation (Japanese)
+
+When the user's language is Japanese, translate validity terms as follows:
+
+| English | Japanese |
+|---------|----------|
+| valid | 妥当 |
+| invalid | 不適切 |
+| partial | 一部妥当 |
+
+Apply this translation in:
+- Phase 2 display (`**Analysis**: {validity}`)
+- AskUserQuestion option mapping
 
 ## Internal Processing Language Rules
 
