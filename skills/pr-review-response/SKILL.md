@@ -145,6 +145,17 @@ Example (English user, invalid comment):
 }
 ```
 
+## Plan Mode Usage
+
+When using this skill in Plan mode, include the following in your plan:
+
+- Detected language (English / Japanese)
+
+At the start of execution phase, if the following information is not in context, read them:
+
+- `./reference/gh-pr-review-usage.md` - Command reference
+- `./templates/{detected_lang}.md` - Reply template (en.md or ja.md based on detected language)
+
 ## Phase 3: Execution
 
 Launch a sub-agent (Task tool) for each approved action.
