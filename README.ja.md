@@ -69,6 +69,50 @@ PRレビュー指摘への対応を支援するスキル。
 - [Demo PR (English)](https://github.com/ttokit/claude-skills/pull/1) - 英語でレビュー返信
 - [Demo PR (日本語)](https://github.com/ttokit/claude-skills/pull/2) - 日本語でレビュー返信
 
+### skill-optimizer
+
+```bash
+npx skills add ttokit/claude-skills --skill skill-optimizer
+```
+
+Anthropic公式ベストプラクティスに基づいてスキルを分析・最適化するスキル。
+
+**機能:**
+- 品質スコア算出（A/B/C/D/Fグレード）
+- 構造分析（Progressive Disclosure準拠）
+- descriptionフィールドの改善提案
+- エラーハンドリングと例の追加推奨
+- MCP統合ガイダンス（該当する場合）
+
+**使い方:**
+1. `/skill-optimizer` または `/skill-optimizer [skill-path]` を実行
+2. 分析対象のスキルを選択（パス未指定の場合）
+3. 分析レポートと品質スコアを確認
+4. 適用する改善カテゴリを選択
+5. 元のファイルに変更が適用される（git復元可能）
+
+**トリガー:**
+- "improve skill", "optimize skill", "review skill"
+- "check SKILL.md", "follow best practices"
+- 「スキルを改善」「最適化して」「ベストプラクティスに従う」
+
+**分析カテゴリ:**
+| カテゴリ | 配点 | 観点 |
+|----------|------|------|
+| Frontmatter | 20 | YAML構文、必須フィールド、セキュリティ |
+| Description | 25 | WHAT + WHEN、トリガーフレーズ、具体性 |
+| Structure | 20 | Progressive Disclosure、ファイルサイズ |
+| Content | 20 | エラーハンドリング、例、明確さ |
+| Additional | 15 | references/活用、MCP統合 |
+
+**参照ドキュメント:**
+- YAMLフロントマター仕様
+- Description記述ベストプラクティス
+- Progressive Disclosure設計ガイド
+- 5つのワークフローパターン（Sequential、Multi-MCP、Iterative、Context-aware、Domain-specific）
+- よくある問題のトラブルシューティング
+- 品質チェックリスト
+
 ## ライセンス
 
 MIT
