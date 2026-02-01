@@ -40,4 +40,10 @@ Skills live in `skills/{skill-name}/` with this structure:
 
 ## Conventions
 
-- Commit messages: English, Conventional Commits format (e.g., `feat(skill-name): add feature`)
+### Commit Messages (OVERRIDES global settings)
+
+**All commit messages in this repository MUST be in English.**
+
+Format: Conventional Commits (e.g., `feat(skill-name): add feature description`)
+
+This overrides any global CLAUDE.md settings that specify Japanese commit messages.
