@@ -9,6 +9,15 @@ Changes:
 
 {optional_explanation}
 
+## Fix Completed (Tests Skipped)
+
+Fixed in commit {short_hash}.
+
+**Note**: Tests were skipped due to {reason}. Please verify manually.
+
+Changes:
+- {change_description}
+
 ## Disagreement Response
 
 Thank you for your feedback.

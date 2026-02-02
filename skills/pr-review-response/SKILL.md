@@ -40,8 +40,8 @@ At the start of Phase 1, detect the primary language for comment replies:
 2. Analyze PR title and body:
    - Japanese characters (hiragana/katakana/kanji): **Japanese**
    - English/Latin characters: **English**
-   - Mixed/unclear: **Ask user via AskUserQuestion**
-   - Empty/symbols only/no text content: **Default to English**, then ask user to confirm
+
+   See [language-detection.md](./reference/language-detection.md) for edge cases (mixed content, empty PR).
 
 3. Display result:
    ```
@@ -66,6 +66,8 @@ gh pr-review review view -R owner/repo --pr {pr_number} --unresolved
 - Do NOT ask the user about resolved comments
 
 See [gh-pr-review-usage.md](./reference/gh-pr-review-usage.md) for detailed options.
+
+**Validation**: If no unresolved comments found, inform user and exit.
 
 ### Analysis (Parallel Sub-agents)
 
@@ -166,30 +168,9 @@ Launch a sub-agent (Task tool) for each approved action.
 
 1. Execute code changes
 
-2. Detect test and format commands by analyzing project configuration:
+2. Detect test and format commands by analyzing project configuration.
 
-   **Detection sources** (sub-agent analyzes and determines priority):
-   - Lock files: `pnpm-lock.yaml`, `yarn.lock`, `package-lock.json`, `Gemfile.lock`, `poetry.lock`, `Cargo.lock`, etc.
-   - Config files: `package.json` (scripts), `mix.exs`, `Makefile`, `pyproject.toml`, `Cargo.toml`, `go.mod`, etc.
-   - CI configs: `.github/workflows/*.yml`, `.gitlab-ci.yml`, `.circleci/config.yml`
-   - README: May document test/format commands
-
-   **Supported ecosystems:**
-   | Indicator | Test | Format |
-   |-----------|------|--------|
-   | package.json | Check scripts for `test`, `test:*` | Check scripts for `fmt`, `format`, `lint:fix` |
-   | mix.exs | `mix test` | `mix format` |
-   | Gemfile | `bundle exec rspec` or `rake test` | `bundle exec rubocop -a` |
-   | pyproject.toml | `pytest` | `ruff format` or `black` |
-   | Cargo.toml | `cargo test` | `cargo fmt` |
-   | go.mod | `go test ./...` | `go fmt ./...` |
-   | Makefile | `make test` | `make fmt` or `make format` |
-
-   **For other ecosystems:** Sub-agent analyzes CI config and project structure to determine appropriate commands.
-
-   **For monorepos:** Sub-agent determines whether to run tests at root or in the affected package.
-
-   **If command not detected:** Display warning and skip (do not fail).
+   See [ecosystem-detection.md](./reference/ecosystem-detection.md) for detection logic and supported ecosystems.
 
 3. Run detected test command (full test suite)
    - If tests fail:
@@ -205,6 +186,7 @@ Launch a sub-agent (Task tool) for each approved action.
 5. Create commit (Conventional Commits format)
 
 6. Push to remote
+   - **Validation**: If push fails, display error and ask user how to proceed
 
 7. Reply to comment (include commit hash and URL)
    - If tests were skipped, mention this in the reply
