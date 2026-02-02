@@ -15,6 +15,36 @@ The gh-pr-review extension is required. If not installed:
 gh extension install agynio/gh-pr-review
 ```
 
+## Plan Mode Requirements
+
+**CRITICAL**: When using this skill in Plan mode, your plan file MUST include the following. This is a BLOCKING requirement.
+
+### Required Plan Content
+
+- [ ] **Detected language**: English / Japanese (from PR title/body analysis)
+- [ ] **Reference files to read at execution start**:
+  - `./references/gh-pr-review-usage.md`
+  - `./templates/{detected_lang}.md`
+
+### Plan Template
+
+Copy this section to your plan file:
+
+```
+## PR Review Response Plan
+
+**Detected Language**: [English / Japanese]
+
+**References to read at execution**:
+- gh-pr-review-usage.md for command reference
+- templates/{lang}.md for reply format
+
+**PR**: {owner/repo}#{number}
+**Unresolved comments**: {count}
+```
+
+Do NOT proceed to Phase 1 until this information is captured in your plan.
+
 ## PR Identification
 
 1. Use the PR number if specified
@@ -148,17 +178,6 @@ Example (English user, invalid comment):
   ]
 }
 ```
-
-## Plan Mode Usage
-
-When using this skill in Plan mode, include the following in your plan:
-
-- Detected language (English / Japanese)
-
-At the start of execution phase, if the following information is not in context, read them:
-
-- `./references/gh-pr-review-usage.md` - Command reference
-- `./templates/{detected_lang}.md` - Reply template (en.md or ja.md based on detected language)
 
 ## Phase 3: Execution
 
