@@ -1,6 +1,6 @@
 ---
 name: pr-review-response
-description: "Handles PR review comments through analyze-confirm-execute workflow. Analyzes comment validity, confirms response approach with user, executes code changes, and replies to reviewers. Use when responding to PR review comments, addressing feedback, or handling PR reviews."
+description: "Handles PR review comments through analyze-confirm-execute workflow. Analyzes comment validity, confirms response approach with user, executes code changes, and replies to reviewers. Use when responding to PR review comments, addressing feedback, handling code review, replying to reviewers, or managing review threads."
 allowed-tools: ["Bash", "Glob", "Grep", "Read", "Edit", "Write", "Task", "AskUserQuestion"]
 ---
 
@@ -41,7 +41,7 @@ At the start of Phase 1, detect the primary language for comment replies:
    - Japanese characters (hiragana/katakana/kanji): **Japanese**
    - English/Latin characters: **English**
 
-   See [language-detection.md](./reference/language-detection.md) for edge cases (mixed content, empty PR).
+   See [language-detection.md](./references/language-detection.md) for edge cases (mixed content, empty PR).
 
 3. Display result:
    ```
@@ -65,7 +65,7 @@ gh pr-review review view -R owner/repo --pr {pr_number} --unresolved
 - Do NOT include resolved comments in Phase 2 confirmation
 - Do NOT ask the user about resolved comments
 
-See [gh-pr-review-usage.md](./reference/gh-pr-review-usage.md) for detailed options.
+See [gh-pr-review-usage.md](./references/gh-pr-review-usage.md) for detailed options.
 
 **Validation**: If no unresolved comments found, inform user and exit.
 
@@ -157,12 +157,18 @@ When using this skill in Plan mode, include the following in your plan:
 
 At the start of execution phase, if the following information is not in context, read them:
 
-- `./reference/gh-pr-review-usage.md` - Command reference
+- `./references/gh-pr-review-usage.md` - Command reference
 - `./templates/{detected_lang}.md` - Reply template (en.md or ja.md based on detected language)
 
 ## Phase 3: Execution
 
-Launch a sub-agent (Task tool) for each approved action.
+### Execution by Action Type
+
+| User Selection | Sub-agent? | Actions |
+|----------------|------------|---------|
+| Fix the issue | Yes | Code changes, test, format, commit, push, reply |
+| Disagree with feedback | No | Direct reply from parent process |
+| Skip | No | No action needed |
 
 ### When Fixing
 
@@ -170,7 +176,7 @@ Launch a sub-agent (Task tool) for each approved action.
 
 2. Detect test and format commands by analyzing project configuration.
 
-   See [ecosystem-detection.md](./reference/ecosystem-detection.md) for detection logic and supported ecosystems.
+   See [ecosystem-detection.md](./references/ecosystem-detection.md) for detection logic and supported ecosystems.
 
 3. Run detected test command (full test suite)
    - If tests fail:
@@ -194,6 +200,16 @@ Launch a sub-agent (Task tool) for each approved action.
 ### When Disagreeing
 
 Reply to comment with reasoning only
+
+### Post-Execution Verification
+
+After all comments are processed:
+
+1. **Verify commits**: Run `git log --oneline -n {number_of_fixes}` to confirm commits
+2. **Verify push**: Run `git status` to confirm branch is up to date with remote
+3. **Verify replies**: Optionally check `gh pr-review review view --pr {pr_number} --unresolved` to confirm resolved count decreased
+
+If any verification fails, notify the user with the specific error.
 
 ## Comment Replies
 
